@@ -29,16 +29,16 @@ func main() {
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		for i, value := range up {
-			fmt.Println(i, value)
-			saida := []byte("Name:" + value.Name + "; Email:" + value.Email + "; Phone:" + value.Phone + "\n")
-			err := ioutil.WriteFile("../Test3/exemplo.txt", saida, 0644)
-			if err != nil {
-				fmt.Println(err)
-			}
+		aux := "NAME:\t\t\t\t\t EMAIL:\t\t\t\t\t\t PHONE:"
+		//var aux string
+		for _, value := range up {
+			teste := value
+			aux = aux + "\n" + string([]byte(teste.Name)) + "\t\t" + string([]byte(teste.Email)) + "\t\t\t\t" + string([]byte(teste.Phone))
 		}
-		//ioutil.WriteFile("../Test3/saida.txt", up, 0644)
+		err := ioutil.WriteFile("../Test3/exemplo.txt", []byte(aux), 0644)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
-	//fmt.Printf(string(doc) + "\n")
 
 }
