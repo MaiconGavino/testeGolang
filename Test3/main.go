@@ -29,7 +29,11 @@ func main() {
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Printf("%v \n", up)
+		for _, value := range up {
+			fmt.Println(value)
+			ioutil.WriteFile("../Test3/exemplo.txt", []byte(value.Name), 0644)
+		}
+		//ioutil.WriteFile("../Test3/saida.txt", up, 0644)
 	}
 	//fmt.Printf(string(doc) + "\n")
 
