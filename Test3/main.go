@@ -29,9 +29,13 @@ func main() {
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		for _, value := range up {
-			fmt.Println(value)
-			ioutil.WriteFile("../Test3/exemplo.txt", []byte(value.Name), 0644)
+		for i, value := range up {
+			fmt.Println(i, value)
+			saida := []byte("Name:" + value.Name + "; Email:" + value.Email + "; Phone:" + value.Phone + "\n")
+			err := ioutil.WriteFile("../Test3/exemplo.txt", saida, 0644)
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
 		//ioutil.WriteFile("../Test3/saida.txt", up, 0644)
 	}
